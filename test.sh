@@ -1,0 +1,24 @@
+python -u -m torch.distributed.launch --nproc_per_node 1 --nnodes=1 --master_addr 127.0.0.1 --master_port 29500 train_bbdm_multidose.py \
+    --model_name bbdm \
+    --run_name dose4_context_normtype3 \
+    --data_root /home/mnt/data/AIGC/PET/test \
+    --mod_input dose_4 \
+    --mod_target dose_full \
+    --batch_size 8 \
+    --test_batch_size 1 \
+    --num_workers 8 \
+    --max_iter 200000 \
+    --objective grad \
+    --init_lr 1e-4 \
+    --resume_iter 0 \
+    --save_freq 5000 \
+    --metric_freq 5000 \
+    --test_iter 200000 \
+    --in_channels 6 \
+    --out_channels 3 \
+    --T 20 \
+    --sampling_timesteps 20 \
+    --mode test_patient_grand_challenge \
+    --context \
+    --normalize_type 3
+
